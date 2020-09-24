@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>The API Gateway to Kill all Monoliths</title>
+
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+-->
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'dist/print/pdf.css' : 'dist/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<style>
+		.red {
+			color: red;
+		}
+
+		.blue {
+			color: #1b91ff;
+		}
+
+		.green {
+			color: #c1ff0b;
+		}
+
+		.orange {
+			color: orange;
+		}
+	</style>
+
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+
+		<section data-background-image="images/mesh.jpg" data-background-repeat="repeat">
+			<h1 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">The <span class="blue">API Gateway</span> to Kill all <span class="red">Monoliths</span></h1>
+			<p style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+				<small>
+					<a href="http://mauricio.github.io/">Maurício Linhares</a> /
+					<a href="http://twitter.com/mauriciojr">@mauriciojr</a> /
+					<span style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Software Engineer at DigitalOcean</span>
+				</small>
+			</p>
+		</section>
+
+		<section>
+			<h1>Once you get good at <span class="green">microservices</span>...</h1>
+		</section>
+
+		<section>
+			<h5>... it <span class="red">will</span> get crowded</h5>
+			<p>
+				<img src="images/crowd.jpg"/>
+			</p>
+		</section>
+
+		<section>
+			<h1>Teams will focus more and more on building <span class="blue">smaller apps</span></h1>
+		</section>
+
+		<section>
+			<img src="images/thisisfine.jpg">
+		</section>
+
+		<section>
+			<h1>Clients don't want to know about all your <span class="red">microservices</span></h1>
+		</section>
+
+		<section>
+			<h1>They want an <span class="orange">unified</span> and <span class="green">easy to use</span> API</h1>
+		</section>
+
+		<section>
+			<h1>For clients</h1>
+			<ul>
+				<li>Centralized source of information</li>
+				<li>Shared authentication and authorization</li>
+				<li>Common call and error handling patterns</li>
+				<li>Common communication format</li>
+			</ul>
+		</section>
+
+		<section>
+			<h1>But <span class="orange">teams</span> also want <span class="blue">freedom</span> to move at their pace</h1>
+		</section>
+
+		<section>
+			<h1>For teams</h1>
+			<ul>
+				<li>Self service routing layer</li>
+				<li>Full control over deployments</li>
+				<li>Freedom to use different communication patterns when needed</li>
+			</ul>
+		</section>
+
+		<section>
+			<h1>We're at odds here</h1>
+			<p>One side wants <span class="red">less</span> change the other wants <span class="green">more</span></p>
+		</section>
+
+		<section>
+			<h5>We need more <span class="green">Layers!</span></h5>
+			<p>
+				<img src="images/layers.jpg">
+			</p>
+		</section>
+
+		<section>
+			<h1>The API Gateway</h1>
+			<p>
+				<img src="images/apigateway.jpg">
+			</p>
+		</section>
+
+		<section>
+			<h1>Goals</h1>
+		</section>
+
+		<section>
+			<h1>Expose unified API to <span class="red">clients</span></h1>
+			<p>Clients get one single API that hides the complexities about
+				knowing every single microservice that exists</p>
+		</section>
+
+		<section>
+			<h1>Share <span class="orange" >common logic</span> for backend services</h1>
+			<p>
+				Logic that can be shared across services (like authentication
+				and authorization) lives at the gateway instead of services.
+			</p>
+		</section>
+
+		<section>
+			<h1><span class="green">Translate</span> protocols and data formats</h1>
+			<p>
+				Be it legacy, monoliths or microservices, the gateway
+				can translate protocols and formats so that clients don't
+				have to know about it.
+			</p>
+		</section>
+
+		<section>
+			<h1>Hide backend <span class="blue">implementation details</span> </h1>
+			<p>
+				Killed the monolith or got a new microservice replacing
+				an old one? The gateway hides the details and clients continue
+				to behave as if nothing changed.
+			</p>
+		</section>
+
+		<section>
+			<h1>Classic <span class="orange">proxy</span> support</h1>
+			<ul>
+				<li>Rate limiting</li>
+				<li>Load balancing</li>
+				<li>Tracing</li>
+				<li>Service discovery</li>
+			</ul>
+		</section>
+
+		<section>
+			<h1>Many instead of one</h1>
+			<p>
+				Backends for frontends (BFFs) are just one API gateway
+				for every frontend you're serving.
+			</p>
+		</section>
+
+		<section>
+			<h1>GraphQL</h1>
+			<p>
+				You can build an API gateway as a GraphQL server and have
+				all your clients talk to it, hiding how the whole infrastructure
+				works as well.
+			</p>
+		</section>
+
+		<section>
+			<h1>How are we doing at <span class="blue">DigitalOcean</span>?</h1>
+		</section>
+
+		<section>
+			<h1>3 <span class="red">Rails</span> monololiths</h1>
+			<p>One shared rubygem with base code</p>
+		</section>
+
+		<section>
+			<h1>July, 2016</h1>
+			<p><span class="blue">Edge Gateway</span> project starts</p>
+		</section>
+
+		<section>
+			<h1>October, 2016</h1>
+			<p>Starts serving <span class="green">production</span> traffic</p>
+		</section>
+
+		<section>
+			<h1>December, 2016</h1>
+			<p><span class="blue">First</span> all new microservice integrated</p>
+		</section>
+
+		<section>
+			<h1>What is it?</h1>
+			<ul>
+				<li>Internal DigitalOcean API gateway</li>
+				<li>Built in Golang</li>
+				<li>Implements shared features currently available at the monoliths</li>
+			</ul>
+		</section>
+
+		<section>
+			<h1>Monoliths and microservices</h1>
+			<p>
+				<span class="green">Microservices</span> are building new functionality
+				and also slowly moving features out of the <span class="red">monolith</span>.
+			</p>
+		</section>
+
+		<section>
+			<h1>Authentication</h1>
+			<p>
+				<span class="red">Authentication</span> and <span class="green">rate limiting</span> happen at the gateway,
+				services receive the requests with metadata already filled in
+				and then perform the operation.
+			</p>
+		</section>
+
+		<section>
+			<h1><span class="blue">Applications</span> don't talk to the <span class="orange">gateway</span></h1>
+			<p>
+				Apps register themselves at the route management service
+				and the gateway talks to this service to figure out where to send
+				requests.
+			</p>
+		</section>
+
+		<section>
+			<h1>Gateway then <span class="blue">forwards</span> them the requests</h1>
+			<p>Authentication and metadata is sent over HTTP headers</p>
+		</section>
+
+		<section>
+			<h1>Headers approach removes <span class="orange">dependency</span></h1>
+			<p>
+				Applications in any language can read the headers
+				and make use of then. They don't depend directly or
+				call the gateway to do their work.
+			</p>
+		</section>
+
+		<section>
+			<h1><span class="orange">Gateway</span> or <span class="green">application</span> updates
+				do not affect one another</h1>
+		</section>
+
+		<section>
+			<h1>What made <span class="green">most</span> of the difference?</h1>
+			<ul>
+				<li>Documentation</li>
+				<li>Sane and easy to use defaults</li>
+				<li>Free metrics and dashboards</li>
+				<li>Self service solution</li>
+				<li>Reliability</li>
+			</ul>
+		</section>
+
+		<section>
+			<h1>Where did we <span class="red">fail</span>?</h1>
+			<ul>
+				<li>Feature parity with existing monolith</li>
+				<li>Being more direct in team-to-team communication</li>
+				<li>Lack of guidance for teams without much Golang experience</li>
+			</ul>
+		</section>
+
+		<section>
+			<h1>Are we ever going to kill the <span class="orange">monoliths</span>?</h1>
+		</section>
+
+		<section>
+			<h1>Questions?</h1>
+			<p>We're hiring! Visit <a href="https://www.digitalocean.com/company/careers/">https://www.digitalocean.com/company/careers/</a>
+				and apply!</p>
+		</section>
+
+		<section>
+			<h1>Thanks!</h1>
+			<p>We're hiring! Visit <a href="https://www.digitalocean.com/company/careers/">https://www.digitalocean.com/company/careers/</a>
+				and apply!</p></section>
+
+	</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="dist/reveal.js"></script>
+
+<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
+</html>
